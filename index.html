@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Animation Assignment</title>
+
+    <style>
+        
+        #animation {
+            width: 700px;
+            height: 400px;
+            background-color: #050210;
+            margin: 150px auto 0;
+            position: relative;
+
+        }
+
+        #central-animation {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            
+            position: relative;
+            top: 60px;
+            left: 225px;
+            border-radius: 100%;
+                       
+            /*border-top:solid 15px #fb5dad;
+            border-right: solid 15px #55fb9f;
+            border-bottom: solid 15px #b97aff;
+            border-left: solid 15px #55fb9f;*/
+            
+            animation-name: ring;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        #central-animation span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+            
+        }
+
+        #central-animation span:nth-child(1) {
+            filter: blur(5px);
+        }      
+        #central-animation span:nth-child(2) {
+            filter: blur(10px);
+        }
+        #central-animation span:nth-child(3) {
+            filter: blur(25px);
+        }
+        #central-animation span:nth-child(4) {
+            filter: blur(50px);
+        }
+
+        #static {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            top: 15px;
+            left: 15px;
+            background: #050210;
+            border-radius: 100%;
+        }
+
+        #static::before {
+            position: absolute;
+            content: "";
+            width: 220px;
+            height: 220px;
+            top: 0px;
+            left: 0px;
+            background: #050210;
+            margin: 0 auto;
+            border-radius: 100%;
+            filter: invert(10%);
+            
+            animation: centar;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+            animation-timing-function: cubic-bezier(0.85, 0.46, 0.65, 0.97);
+        } 
+
+        @keyframes ring {
+            0% {
+                transform: rotate3d(0,0,1, 0deg);
+            }
+
+            100% {
+                transform: rotate3d(0,0,1, 360deg);
+            }
+        }
+
+        @keyframes centar {
+            0% {
+                transform: scale(1, 1);
+            }
+
+            100% {
+                transform: scale(0, 0);
+            }
+        }
+
+        
+            
+        
+    </style>
+
+
+
+</head>
+<body>
+
+    <div id="animation">
+        
+        <div id="central-animation">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <div id="static"></div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>
